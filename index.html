@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: azure;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background-color: blueviolet;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="content">
+    <h2> Kurzes interaktives Quiz </h2>
+    <p>Cyberangriffe auf Flughäfen</p>
+    <button onclick="next()">Start</button> 
+  </div>
+
+  <script>
+    let step=0;
+
+    const userAgent= navigator.userAgent;
+
+    function getDevice () {
+      if (/mobile/i.test(userAgent)) return "Smartphone";
+      if (/tablet/i.test(userAgent)) return "Tablet";
+      return "Desktop";
+    }
+
+    function getBrowser () {
+      if (userAgent.includes("Chrome")) return "Chrome";
+      if (userAgent.includes("Firefox")) return "Firefox";
+      if (userAgent.includes("Brave")) return "Brave";
+      if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) return "Safari";
+      return "Unbekannt";
+    }
+
+function next() {
+  step++;
+
+  if (step ===1) {
+    document.getElementById("content").innerHTML= `
+    <h3>Frage 1</h3>
+    <p>Wie lange dauert die Brute Force Methode bei modernen Sicherheitssystemen?</p>
+    <button onclick="next()">Wenige Tage</button>
+    <button onclick="next()">Mehrere Wochen</button>
+    <button onclick="next()">Mehrere Jahre</button>
+    `;
+  }
+  else if (step ===2) {
+    document.getElementById("content").innerHTML= `
+    <h3>Frage 2?</h3>
+    <p>Bezieht Patrick schon Rente?</p>
+    <button onclick="next()">Jaaaa</button>
+    <button onclick="next()">Neeee</button>
+    `;
+  }
+  else {
+    document.getElementById("content").innerHTML= `
+    <h3>WARNUNG!</h3>
+    <p>Sie wurden gerade eben gerickrolled!</p>
+    <p>Was würde ihr Chef von ihnen denken?</p>
+    <p>Sie haben:</p>
+    <ul style="text-allign: left;">
+      <li>mal wieder zu viel Zeit in der Keramikabteilung verbracht!</li>
+      <li>die Schulungsunterlagen wohl einfach im schnell Durchlauf durchgeklickt!</li>
+      </ul>
+    <p><strong>An dieser Stelle könnte ihre Mahnung stehen!</strong></p>
+
+    <p>Vielen Dank für das annehmen der Cookies :)</p>
+    <p><strong>Ihr Gerät:</strong>${getDevice()}</p>
+    <p><strong>Ihr Browser:</strong>${getBrowser()}</p>
+    `;
+  }
+}
+  </script>
+  
+</body>
+</html>
