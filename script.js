@@ -1,25 +1,4 @@
-const quizData = [
-  {
-    question: "Wie lange dauert die Brute Force Methode bei modernen Sicherheitssystemen?",
-    answers: ["Wenige Tage", "Mehrere Wochen", "Mehrere Jahre"],
-  },
-  {
-    question: "Was ist das Hauptziel von Phishing-Angriffen?",
-    answers: ["Daten stehlen", "Server zerstören", "Netzwerke lahmlegen"],
-  },
-  {
-    question: "Was ist ein wichtiger Schutz vor Ransomware?",
-    answers: ["Regelmäßige Backups", "Kommentare in HTML", "Browser-Design ändern"],
-  },
-  {
-    question: "Was bedeutet Sicherheitsbewusstsein?",
-    answers: ["Auf Gefahren achten", "Nur Social Media nutzen", "Jeden Tag Spiele spielen"],
-  },
-  {
-    question: "Wie reagierst du bei einer ungewöhnlichen E-Mail?",
-    answers: ["Nicht öffnen und melden", "Einfach anklicken", "Antworten mit Passwort"],
-  },
-];
+let quizData = [];
 
 let step = 0;
 let started = false;
@@ -45,21 +24,31 @@ function startPolling() {
   if (window.pollingStarted || triggered) return;
   window.pollingStarted = true;
 
-  setInterval(async () => {
-    if (!started || triggered) return;
+  // If you want to use the Trigger.json hosted on GitHub, set its raw URL here,
+  // otherwise leave empty to use the local Trigger.json near the site.
+  const GITHUB_TRIGGER_URL = ""; // e.g. "https://raw.githubusercontent.com/username/repo/branch/Trigger.json"
 
+  const fetchTrigger = async () => {
+    const base = GITHUB_TRIGGER_URL || "Trigger.json";
     try {
-      const response = await fetch("state.json?t=" + Date.now());
-      const data = await response.json();
-
-      if (data.trigger === true) {
+      const res = await fetch(base + "?t=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) throw new Error(`Status ${res.status}`);
+      const data = await res.json();
+      if (data && data.trigger === true) {
         triggered = true;
         showWarning();
       }
-    } catch (error) {
-      console.log("Fehler beim Laden:", error);
+    } catch (err) {
+      // don't spam console on every poll
+      console.debug("Trigger fetch failed:", err.message);
     }
-  }, 1000);
+  };
+
+  // Poll every 2 seconds while quiz is running
+  setInterval(() => {
+    if (!started || triggered) return;
+    fetchTrigger();
+  }, 2000);
 }
 
 function showWarning() {
@@ -92,13 +81,13 @@ function renderQuestion(index) {
   const content = document.getElementById("content");
   const question = quizData[index - 1];
 
-  const answersHtml = question.answers
+  const answersHtml = (question.answers || [])
     .map((answer) => `<button onclick="next()">${answer}</button>`)
     .join("");
 
   content.innerHTML = `
     <h3>Frage ${index}</h3>
-    <p>${question.question}</p>
+    <p>${question.question || "(keine Frage)"}</p>
     ${answersHtml}
   `;
 }
@@ -127,7 +116,8 @@ function next() {
     return;
   }
 
-  renderEnd();
+  // After the last question: show the warning immediately (no separate "Quiz beendet" screen)
+  showWarning();
 }
 
 function initialize() {
@@ -135,8 +125,20 @@ function initialize() {
   content.innerHTML = `
     <h2>Kurzes interaktives Quiz</h2>
     <p>Cyberangriffe auf Flughäfen</p>
-    <button onclick="next()">Start</button>
+    <button id="startBtn">Start</button>
   `;
+
+  // load Fragen from JSON
+  fetch("fragen.json?t=" + Date.now(), { cache: "no-store" })
+    .then((r) => r.json())
+    .then((data) => {
+      if (Array.isArray(data)) quizData = data;
+      document.getElementById("startBtn").addEventListener("click", next);
+    })
+    .catch((err) => {
+      console.error("Fehler beim Laden der Fragen:", err);
+      document.getElementById("startBtn").addEventListener("click", next);
+    });
 }
 
 window.addEventListener("DOMContentLoaded", initialize);
