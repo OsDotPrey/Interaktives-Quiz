@@ -48,7 +48,7 @@ function startPolling() {
   setInterval(() => {
     if (!started || triggered) return;
     fetchTrigger();
-  }, 2000);
+  }, 500);
 }
 
 function showWarning() {
