@@ -142,3 +142,5 @@ function initialize() {
 }
 
 window.addEventListener("DOMContentLoaded", initialize);
+
+quizData.sort(() => Math.random() - 0.5);
