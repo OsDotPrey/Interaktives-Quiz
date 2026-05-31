@@ -1,42 +1,42 @@
 [
   {
-    "question": "Warum stellen Drittanbieter wie Catering-, Wartungs- oder Retailfirmen ein besonders kritisches Cybersicherheitsrisiko für das Flughafen-Ökosystem dar, und wie ordnet die BMV-Verordnung die davon potenziell betroffenen sicherheitsrelevanten Systeme rechtlich ein?",
-    "answers": ["Sie nutzen in der Regel veraltete Hardware für ihre Logistik, und ihre Systeme werden vom BSI automatisch als unabhängige Kritische Infrastrukturen (KRITIS) eingestuft", "Sie bieten über oftmals unzureichend abgesicherte Schnittstellen einen Seiteneingang in das Flughafennetzwerk; betroffene Systeme, deren Ausfall die Luftsicherheit gefährdet, gelten als Kritische informations- und kommunikationstechnische Systeme (KIKS", "Ihre IT-Systeme verursachen den primären Engpass beim sogenannten Zeit-Hebel, da sie rechtlich als Operationelle Technologie (OT) klassifiziert werden und nicht durch Firewalls schützbar sind"]
+    "question": "Welche Behörden sind für die Kontrolle der Umsetzung der Richtlinien auf nationaler Ebene zuständig?",
+    "answers": ["BSI, DFS, LBA, EASA", "DFS, BMI, BSI", "BMI, BSI, DFS, LBA"]
   },
   {
-    "question": "Wie schützt man sich vor Ransomware am besten?",
-    "answers": ["Regelmäßige Backups", "Ignorieren von Updates", "Öffnen unbekannter Dateien"]
+    "question": "Wofür steht die Abkürzung DDoS?",
+    "answers": ["Decentralised Denial of Systems", "Distributed Denial of Service", "Debased Data of Schematics"]
   },
   {
-    "question": "Was bedeutet Zwei-Faktor-Authentifizierung?",
-    "answers": ["Zwei Bestätigungsschritte beim Login", "Zwei Passwörter", "Zwei Benutzerkonten"]
+    "question": "Wie definieren sich die Begriffe KRITIS und KIKS?",
+    "answers": ["Kritische Infrastruktur und Kritische Informationssysteme", "Kritische Informatiksysteme und Krisenmanagementsysteme", "Kritische Infrastruktur und Krisenmanagementsysteme"]
   },
   {
-    "question": "Wofür steht VPN?",
-    "answers": ["Virtual Private Network", "Very Private Network", "Verified Public Network"]
+    "question": "Was ist die häufigste Form von Cyberangriffen?",
+    "answers": ["Phishing", "Malware", "Ransomware"]
   },
   {
-    "question": "Was ist ein starkes Passwort?",
-    "answers": ["Lange Kombination aus Zeichen", "Geburtsdatum", "Einfaches Wort"]
+    "question": "In wievielen Sektoren wird in der kritischen Infrastruktur unterschieden?",
+    "answers": ["27", "19", "18"]
   },
   {
-    "question": "Wie erkennst du eine sichere Website?",
-    "answers": ["HTTPS und Schloss-Symbol", "Keine Bilder", "Kurze Ladezeit"]
+    "question": "Aus welchem Land stammt der größte Teil politischer Cyberangriffe?",
+    "answers": ["China", "Russland", "Nordkorea"]
   },
   {
-    "question": "Was ist Social Engineering?",
-    "answers": ["Manipulation von Personen", "Hardware-Fehler", "Software-Update"]
+    "question": "Welche Kosten haben Cyberangriffe im Jahr 2021 verursacht?",
+    "answers": ["17 Milliarden", "20 Milliarden", "26 Milliarden"]
   },
   {
-    "question": "Warum sind Updates wichtig?",
-    "answers": ["Schließen von Sicherheitslücken", "Schöneres Design", "Mehr Werbung"]
+    "question": "Bla?",
+    "answers": ["1", "2", "3"]
   },
   {
-    "question": "Wie verhältst du dich bei einem Verdacht auf Datenleak?",
-    "answers": ["IT melden und Passwörter ändern", "Nichts tun", "E-Mails löschen"]
+    "question": "Bla?",
+    "answers": ["1", "2", "3"]
   },
   {
-    "question": "Was ist das wichtigste beim Umgang mit Anhängen?",
-    "answers": ["Nur von vertrauenswürdigen Absendern öffnen", "Alle Anhänge öffnen", "Anhänge umbenennen"]
+    "question": "Bla?",
+    "answers": ["1", "2", "3"]
   }
 ]
