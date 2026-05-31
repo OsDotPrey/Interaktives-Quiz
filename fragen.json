@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Was ist Phishing?",
+    "answers": ["Eine Angriffsform per E-Mail", "Ein Backup-Verfahren", "Ein Verschlüsselungsalgorithmus"]
+  },
+  {
+    "question": "Wie schützt man sich vor Ransomware am besten?",
+    "answers": ["Regelmäßige Backups", "Ignorieren von Updates", "Öffnen unbekannter Dateien"]
+  },
+  {
+    "question": "Was bedeutet Zwei-Faktor-Authentifizierung?",
+    "answers": ["Zwei Bestätigungsschritte beim Login", "Zwei Passwörter", "Zwei Benutzerkonten"]
+  },
+  {
+    "question": "Wofür steht VPN?",
+    "answers": ["Virtual Private Network", "Very Private Network", "Verified Public Network"]
+  },
+  {
+    "question": "Was ist ein starkes Passwort?",
+    "answers": ["Lange Kombination aus Zeichen", "Geburtsdatum", "Einfaches Wort"]
+  },
+  {
+    "question": "Wie erkennst du eine sichere Website?",
+    "answers": ["HTTPS und Schloss-Symbol", "Keine Bilder", "Kurze Ladezeit"]
+  },
+  {
+    "question": "Was ist Social Engineering?",
+    "answers": ["Manipulation von Personen", "Hardware-Fehler", "Software-Update"]
+  },
+  {
+    "question": "Warum sind Updates wichtig?",
+    "answers": ["Schließen von Sicherheitslücken", "Schöneres Design", "Mehr Werbung"]
+  },
+  {
+    "question": "Wie verhältst du dich bei einem Verdacht auf Datenleak?",
+    "answers": ["IT melden und Passwörter ändern", "Nichts tun", "E-Mails löschen"]
+  },
+  {
+    "question": "Was ist das wichtigste beim Umgang mit Anhängen?",
+    "answers": ["Nur von vertrauenswürdigen Absendern öffnen", "Alle Anhänge öffnen", "Anhänge umbenennen"]
+  }
+]
