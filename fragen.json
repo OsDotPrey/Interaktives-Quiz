@@ -1,7 +1,7 @@
 [
   {
-    "question": "Was ist Phishing?",
-    "answers": ["Eine Angriffsform per E-Mail", "Ein Backup-Verfahren", "Ein Verschlüsselungsalgorithmus"]
+    "question": "Warum stellen Drittanbieter wie Catering-, Wartungs- oder Retailfirmen ein besonders kritisches Cybersicherheitsrisiko für das Flughafen-Ökosystem dar, und wie ordnet die BMV-Verordnung die davon potenziell betroffenen sicherheitsrelevanten Systeme rechtlich ein?",
+    "answers": ["Sie nutzen in der Regel veraltete Hardware für ihre Logistik, und ihre Systeme werden vom BSI automatisch als unabhängige Kritische Infrastrukturen (KRITIS) eingestuft", "Sie bieten über oftmals unzureichend abgesicherte Schnittstellen einen Seiteneingang in das Flughafennetzwerk; betroffene Systeme, deren Ausfall die Luftsicherheit gefährdet, gelten als Kritische informations- und kommunikationstechnische Systeme (KIKS", "Ihre IT-Systeme verursachen den primären Engpass beim sogenannten Zeit-Hebel, da sie rechtlich als Operationelle Technologie (OT) klassifiziert werden und nicht durch Firewalls schützbar sind"]
   },
   {
     "question": "Wie schützt man sich vor Ransomware am besten?",
