@@ -132,7 +132,11 @@ function initialize() {
   fetch("fragen.json?t=" + Date.now(), { cache: "no-store" })
     .then((r) => r.json())
     .then((data) => {
-      if (Array.isArray(data)) quizData = data;
+      if (Array.isArray(data)) {
+        quizData = data;
+        // Shuffle questions randomly for each participant
+        quizData.sort(() => Math.random() - 0.5);
+      }
       document.getElementById("startBtn").addEventListener("click", next);
     })
     .catch((err) => {
@@ -142,5 +146,3 @@ function initialize() {
 }
 
 window.addEventListener("DOMContentLoaded", initialize);
-
-quizData.sort(() => Math.random() - 0.5);
