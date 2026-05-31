@@ -26,7 +26,7 @@ function startPolling() {
 
   // If you want to use the Trigger.json hosted on GitHub, set its raw URL here,
   // otherwise leave empty to use the local Trigger.json near the site.
-  const GITHUB_TRIGGER_URL = ""; // e.g. "https://raw.githubusercontent.com/username/repo/branch/Trigger.json"
+  const GITHUB_TRIGGER_URL = "https://raw.githubusercontent.com/OsDotPrey/Interaktives-Quiz/main/Trigger.json";
 
   const fetchTrigger = async () => {
     const base = GITHUB_TRIGGER_URL || "Trigger.json";
