@@ -91,7 +91,7 @@ button.correct-hint {
   margin-top: 20px;
   padding: 10px 20px;
   border: none;
-  background: linear-gradient(to bottom right, #00eeff7f 10%, #ffffff00 70%);
+  background: linear-gradient(to bottom right, #00841883 10%, #ffffff00 70%);
   border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);

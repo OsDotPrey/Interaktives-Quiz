@@ -34,7 +34,17 @@ function startPolling() {
       const res = await fetch(base + "?t=" + Date.now(), { cache: "no-store" });
       if (!res.ok) throw new Error(`Status ${res.status}`);
       const data = await res.json();
-      if (data && data.trigger === true) {
+      
+      // Prüfe zeitgesteuerten Trigger
+      if (data && data.triggerTime) {
+        const triggerTime = new Date(data.triggerTime);
+        if (new Date() >= triggerTime) {
+          triggered = true;
+          showWarning();
+        }
+      }
+      // Fallback: prüfe alten boolean trigger (rückwärtskompatibel)
+      else if (data && data.trigger === true) {
         triggered = true;
         showWarning();
       }
