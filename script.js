@@ -36,13 +36,18 @@ function startPolling() {
       const res = await fetch(base + "?t=" + Date.now(), { cache: "no-store" });
       if (!res.ok) throw new Error(`Status ${res.status}`);
       const data = await res.json();
-      
+      console.debug("Trigger fetch result:", data);
       // Prüfe zeitgesteuerten Trigger
       if (data && data.triggerTime) {
         const triggerTime = new Date(data.triggerTime);
-        if (new Date() >= triggerTime) {
+        const now = new Date();
+        console.debug("Now:", now.toISOString(), "TriggerTime:", triggerTime.toISOString());
+        if (now >= triggerTime) {
+          console.info("Trigger time reached — showing warning.");
           triggered = true;
           showWarning();
+        } else {
+          console.debug("Trigger time not reached yet.");
         }
       }
       // Fallback: prüfe alten boolean trigger (rückwärtskompatibel)
@@ -56,11 +61,12 @@ function startPolling() {
     }
   };
 
-  // Poll every 2 seconds while quiz is running
+  // Do an immediate check once, then poll every 2 seconds while quiz is running
+  fetchTrigger();
   setInterval(() => {
     if (!started || triggered) return;
     fetchTrigger();
-  }, 500);
+  }, 2000);
 }
 
 function showWarning() {
@@ -177,6 +183,7 @@ function initialize() {
     <h2>Kurzes interaktives Quiz</h2>
     <p>Cyberangriffe auf Flughäfen</p>
     <button id="startBtn">Start</button>
+    <button id="checkTriggerBtn" style="margin-left:10px;">Prüfe Trigger jetzt</button>
   `;
 
   // load Fragen from JSON
@@ -194,6 +201,29 @@ function initialize() {
       console.error("Fehler beim Laden der Fragen:", err);
       document.getElementById("startBtn").addEventListener("click", next);
     });
+
+  // Manuelle Trigger-Prüfung für Debug/Test
+  window.checkTriggerNow = async function() {
+    try {
+      const base = ""; // use configured URL inside startPolling
+      // call fetchTrigger by temporarily invoking startPolling's inner fetch
+      const GITHUB_TRIGGER_URL = "https://raw.githubusercontent.com/OsDotPrey/Interaktives-Quiz/main/Trigger.json";
+      const res = await fetch((GITHUB_TRIGGER_URL || "Trigger.json") + "?t=" + Date.now(), { cache: "no-store" });
+      const data = await res.json();
+      console.log('Manual check result:', data);
+      if (data && data.triggerTime && new Date() >= new Date(data.triggerTime)) {
+        showWarning();
+      } else if (data && data.trigger === true) {
+        showWarning();
+      } else {
+        alert('Trigger noch nicht erreicht');
+      }
+    } catch (e) {
+      console.error('Manual trigger check failed', e);
+      alert('Fehler beim Prüfen des Triggers. Siehe Konsole.');
+    }
+  };
+  document.getElementById('checkTriggerBtn').addEventListener('click', () => window.checkTriggerNow());
 }
 
 window.addEventListener("DOMContentLoaded", initialize);
