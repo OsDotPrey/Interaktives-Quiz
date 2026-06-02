@@ -67,19 +67,19 @@ button.correct {
   margin-top: 20px;
   padding: 10px 20px;
   border: none;
-  background: linear-gradient(to bottom right, #00ff2f80 10%, #ffffff00 80%);
+  background: linear-gradient(to bottom right, #00ff2f83 10%, #ffffff00 70%);
   border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 15px;
-  color: rgb(0, 0, 0);
+  color: black;
 }
 
 button.wrong {
  margin-top: 20px;
   padding: 10px 20px;
   border: none;
-  background: linear-gradient(to bottom right, #ff000080 10%, #ffffff00 80%);
+  background: linear-gradient(to bottom right, #ff000079 10%, #ffffff00 70%);
   border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -91,10 +91,10 @@ button.correct-hint {
   margin-top: 20px;
   padding: 10px 20px;
   border: none;
-  background: linear-gradient(to bottom right, #00eeff80 10%, #ffffff00 80%);
+  background: linear-gradient(to bottom right, #00eeff7f 10%, #ffffff00 70%);
   border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 15px;
-  color: white;
+  color: black;
 }
