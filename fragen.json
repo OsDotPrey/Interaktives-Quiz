@@ -1,42 +1,52 @@
 [
   {
     "question": "Welche Behörden sind für die Kontrolle der Umsetzung der Richtlinien auf nationaler Ebene zuständig?",
-    "answers": ["BSI, DFS, LBA, EASA", "DFS, BMI, BSI", "BMI, BSI, DFS, LBA"]
+    "answers": ["BSI, DFS, LBA, EASA", "DFS, BMI, BSI", "BMI, BSI, DFS, LBA"],
+    "correct": 2
   },
   {
     "question": "Wofür steht die Abkürzung DDoS?",
-    "answers": ["Decentralised Denial of Systems", "Distributed Denial of Service", "Debased Data of Schematics"]
+    "answers": ["Decentralised Denial of Systems", "Distributed Denial of Service", "Debased Data of Schematics"],
+    "correct": 1
   },
   {
     "question": "Wie definieren sich die Begriffe KRITIS und KIKS?",
-    "answers": ["Kritische Infrastruktur und Kritische Informationssysteme", "Kritische Informatiksysteme und Krisenmanagementsysteme", "Kritische Infrastruktur und Krisenmanagementsysteme"]
+    "answers": ["Kritische Infrastruktur und Kritische Informationssysteme", "Kritische Informatiksysteme und Krisenmanagementsysteme", "Kritische Infrastruktur und Krisenmanagementsysteme"],
+    "correct": 0
   },
   {
     "question": "Was ist die häufigste Form von Cyberangriffen?",
-    "answers": ["Phishing", "Malware", "Ransomware"]
+    "answers": ["Phishing", "Malware", "Ransomware"],
+    "correct": 2
   },
   {
     "question": "In wievielen Sektoren wird in der kritischen Infrastruktur unterschieden?",
-    "answers": ["27", "19", "18"]
+    "answers": ["27", "19", "18"],
+    "correct": 2
   },
   {
     "question": "Aus welchem Land stammt der größte Teil politischer Cyberangriffe?",
-    "answers": ["China", "Russland", "Nordkorea"]
+    "answers": ["China", "Russland", "Nordkorea"],
+    "correct": 1
   },
   {
     "question": "Welche Kosten haben Cyberangriffe im Jahr 2021 verursacht?",
-    "answers": ["17 Milliarden", "20 Milliarden", "26 Milliarden"]
+    "answers": ["17 Milliarden", "20 Milliarden", "26 Milliarden"],
+    "correct": 1
   },
   {
     "question": "Bla?",
-    "answers": ["1", "2"]
+    "answers": ["1", "2"],
+    "correct": 0
   },
   {
     "question": "Bla?",
-    "answers": ["1"]
+    "answers": ["1"],
+    "correct": 0
   },
   {
     "question": "Bla?",
-    "answers": ["1", "2", "3"]
+    "answers": ["1", "2", "3"],
+    "correct": 0
   }
 ]

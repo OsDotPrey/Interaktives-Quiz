@@ -8,7 +8,7 @@ const userAgent = navigator.userAgent;
 function getDevice() {
   if (/mobile/i.test(userAgent)) return "Smartphone";
   if (/tablet/i.test(userAgent)) return "Tablet";
-  return "Desktop";
+  return "Laptop";
 }
 
 function getBrowser() {
@@ -55,15 +55,14 @@ function showWarning() {
   const content = document.getElementById("content");
   content.innerHTML = `
     <h3>WARNUNG!</h3>
-    <p>Sie wurden gerade eben gerickrolled!</p>
+    <p>Sie könnten bereits gefährdet sein!</p>
     <p>Was würde Ihr Chef von Ihnen denken?</p>
     <p>Sie haben:</p>
     <ul style="text-align: left;">
-      <li>mal wieder zu viel Zeit in der Keramikabteilung verbracht!</li>
+      <li>die Cookies angenommen, ohne nachzudenken!</li>
       <li>die Schulungsunterlagen wohl einfach im Schnell-Durchlauf durchgeklickt!</li>
     </ul>
-    <p><strong>An dieser Stelle könnte Ihre Mahnung stehen!</strong></p>
-    <p>Vielen Dank für das Annehmen der Cookies :)</p>
+    <p><strong>Bitte seien Sie vorsichtig und vertrauen Sie nicht jedem QR-Code!</strong></p>
     <p><strong>Ihr Gerät:</strong> ${getDevice()}</p>
     <p><strong>Ihr Browser:</strong> ${getBrowser()}</p>
   `;
@@ -82,7 +81,7 @@ function renderQuestion(index) {
   const question = quizData[index - 1];
 
   const answersHtml = (question.answers || [])
-    .map((answer) => `<button onclick="next()">${answer}</button>`)
+    .map((answer, i) => `<button onclick="answerQuestion(${i})" data-index="${i}">${answer}</button>`)
     .join("");
 
   content.innerHTML = `
@@ -90,6 +89,46 @@ function renderQuestion(index) {
     <p>${question.question || "(keine Frage)"}</p>
     ${answersHtml}
   `;
+}
+
+function answerQuestion(selectedIndex) {
+  const question = quizData[step - 1];
+  const correctIndex = question.correct;
+  const buttons = document.querySelectorAll("button[data-index]");
+
+  // Disable all buttons
+  buttons.forEach((btn) => {
+    btn.onclick = null;
+    btn.style.pointerEvents = "none";
+  });
+
+  if (selectedIndex === correctIndex) {
+    // Correct answer - make button green
+    buttons[selectedIndex].classList.add("correct");
+  } else {
+    // Wrong answer - make selected button red, correct button green border
+    buttons[selectedIndex].classList.add("wrong");
+    buttons[correctIndex].classList.add("correct-hint");
+  }
+
+  // Show "next question" button outside .card with transition
+  const nextButtonContainer = document.getElementById("nextButtonContainer");
+  nextButtonContainer.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.textContent = "nächste Frage";
+  nextBtn.id = "nextBtn";
+  nextBtn.onclick = () => {
+    // Hide button with transition, then load next question
+    nextButtonContainer.classList.remove("visible");
+    setTimeout(() => {
+      next();
+    }, 400);
+  };
+  nextButtonContainer.appendChild(nextBtn);
+  // Trigger transition by adding class after a tiny delay
+  requestAnimationFrame(() => {
+    nextButtonContainer.classList.add("visible");
+  });
 }
 
 function renderEnd() {
