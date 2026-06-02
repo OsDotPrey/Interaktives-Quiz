@@ -72,17 +72,18 @@ function startPolling() {
 function showWarning() {
   const content = document.getElementById("content");
   content.innerHTML = `
-    <h3>WARNUNG!</h3>
-    <p>Sie könnten bereits gefährdet sein!</p>
-    <p>Was würde Ihr Chef von Ihnen denken?</p>
-    <p>Sie haben:</p>
-    <ul style="text-align: left;">
-      <li>die Cookies angenommen, ohne nachzudenken!</li>
-      <li>die Schulungsunterlagen wohl einfach im Schnell-Durchlauf durchgeklickt!</li>
-    </ul>
-    <p><strong>Bitte seien Sie vorsichtig und vertrauen Sie nicht jedem QR-Code!</strong></p>
-    <p><strong>Ihr Gerät:</strong> ${getDevice()}</p>
-    <p><strong>Ihr Browser:</strong> ${getBrowser()}</p>
+  <h3> Sicherheitswarnung</h3>
+  <p>Gut, dass das nur eine Übung war.</p>
+  <p>Sie haben gerade einem fremden QR-Code vertraut – ohne zu zögern.</p>
+  <ul style="text-align: left;">
+    <li> Cookies akzeptiert</li>
+    <li> QR-Code gescannt</li>
+    <li> Website geöffnet</li>
+  </ul>
+  <p>In der echten Welt wäre das möglicherweise der Anfang vom Ende.</p>
+  <p><strong>Ihr Gerät:</strong> ${getDevice()}</p>
+  <p><strong>Ihr Browser:</strong> ${getBrowser()}</p>
+  <p style="font-size: 0.85em; opacity: 0.7;">(...zum Glück nur fast.)</p>
   `;
   playAlarm();
 }
@@ -173,8 +174,8 @@ function next() {
     return;
   }
 
-  // After the last question: show the warning immediately (no separate "Quiz beendet" screen)
-  showWarning();
+  // After the last question: show a normal end screen.
+  renderEnd();
 }
 
 function initialize() {
