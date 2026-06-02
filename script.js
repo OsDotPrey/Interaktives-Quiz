@@ -1,3 +1,5 @@
+// Note: Kleine Änderung für einen No-Op-Commit, um GitHub Actions neu zu triggern.
+// Implementiert: zeitgesteuerter Trigger via `triggerTime` in Trigger.json
 let quizData = [];
 
 let step = 0;
