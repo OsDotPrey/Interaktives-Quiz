@@ -66,7 +66,7 @@ function startPolling() {
   setInterval(() => {
     if (!started || triggered) return;
     fetchTrigger();
-  }, 2000);
+  }, 1000);
 }
 
 function showWarning() {
@@ -184,7 +184,6 @@ function initialize() {
     <h2>Kurzes interaktives Quiz</h2>
     <p>Cyberangriffe auf Flughäfen</p>
     <button id="startBtn">Start</button>
-    <button id="checkTriggerBtn" style="margin-left:10px;">Prüfe Trigger jetzt</button>
   `;
 
   // load Fragen from JSON
@@ -203,28 +202,7 @@ function initialize() {
       document.getElementById("startBtn").addEventListener("click", next);
     });
 
-  // Manuelle Trigger-Prüfung für Debug/Test
-  window.checkTriggerNow = async function() {
-    try {
-      const base = ""; // use configured URL inside startPolling
-      // call fetchTrigger by temporarily invoking startPolling's inner fetch
-      const GITHUB_TRIGGER_URL = "https://raw.githubusercontent.com/OsDotPrey/Interaktives-Quiz/main/Trigger.json";
-      const res = await fetch((GITHUB_TRIGGER_URL || "Trigger.json") + "?t=" + Date.now(), { cache: "no-store" });
-      const data = await res.json();
-      console.log('Manual check result:', data);
-      if (data && data.triggerTime && new Date() >= new Date(data.triggerTime)) {
-        showWarning();
-      } else if (data && data.trigger === true) {
-        showWarning();
-      } else {
-        alert('Trigger noch nicht erreicht');
-      }
-    } catch (e) {
-      console.error('Manual trigger check failed', e);
-      alert('Fehler beim Prüfen des Triggers. Siehe Konsole.');
-    }
-  };
-  document.getElementById('checkTriggerBtn').addEventListener('click', () => window.checkTriggerNow());
+
 }
 
 window.addEventListener("DOMContentLoaded", initialize);
